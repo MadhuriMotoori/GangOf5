@@ -1,29 +1,35 @@
 
 public class NoCash implements ATMState{
 
+	ATMMachine atmMachine;
+	public NoCash(ATMMachine newATMMachine){
+		atmMachine = newATMMachine;
+	}
 	
 	@Override
 	public void insertCard() {
-		// TODO Auto-generated method stub
+		
+		System.out.println("Money is not present");
 		
 	}
 
 	@Override
 	public void ejectCard() {
-		// TODO Auto-generated method stub
+		
+		System.out.println("We don't have money.");
 		
 	}
 
 	@Override
 	public void insertPin(int pin) {
-		// TODO Auto-generated method stub
 		
+		System.out.println("We dont have money");
 	}
 
 	@Override
 	public void requestCash(int cash) {
-		// TODO Auto-generated method stub
 		
+		System.out.println("We dont have money");
 	}
 
 }

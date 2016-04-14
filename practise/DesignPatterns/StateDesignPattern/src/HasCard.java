@@ -14,14 +14,12 @@ public class HasCard implements ATMState{
 
 	@Override
 	public void ejectCard() {
-		// TODO Auto-generated method stub
 		System.out.println("Card Ejected");
 		atmMachine.setATMState(atmMachine.getNoCardState());
 	}
 
 	@Override
 	public void insertPin(int pinEntered) {
-		// TODO Auto-generated method stub
 		if(pinEntered == 1234){
 			System.out.println("Correct pin");
 			atmMachine.correctPinEntered = true;

@@ -17,7 +17,7 @@ public class ATMMachine {
 		noCash = new NoCash(this);
 		atmState = noCard;
 		if(cashInMachine < 0)
-			atmState = atmOutOfMoney;
+			atmState = noCash;
 	}
 	
 	void setATMState(ATMState newATMState){
