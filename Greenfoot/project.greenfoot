@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Fri Apr 22 05:27:23 PDT 2016
+#Fri Apr 22 05:35:45 PDT 2016
 dependency9.type=UsesDependency
 target4.type=ClassTarget
 target8.showInterface=false
@@ -25,7 +25,6 @@ target3.typeParameters=
 dependency4.from=Player
 mainWindow.width=800
 dependency4.type=UsesDependency
-class.Menu.image=board.jpg
 target2.width=80
 target5.name=Food1
 class.Wall.superclass=greenfoot.Actor
