@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Menu extends World
+public class MenuWorld extends World
 {
     private Buttons buttonPlayer1;
     private Buttons buttonPlayer2;
@@ -16,12 +16,12 @@ public class Menu extends World
      * Constructor for objects of class Menu.
      * 
      */
-    public Menu()
+    public MenuWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(731, 701, 1); 
-        setPaintOrder(ButtonsOverlay.class, Menu.class, Buttons.class, Cover.class,Wall.class,GhostAbstract.class,Player.class,Food.class);
-        setActOrder(Player.class,Food.class,GhostAbstract.class);
+        setPaintOrder(ButtonsOverlay.class, Buttons.class, Cover.class,Wall.class,Ghost.class,Player.class,Food.class);
+        setActOrder(Player.class,Food.class,Ghost.class);
         prepare();
         Greenfoot.setSpeed(50); Greenfoot.start(); 
     }
@@ -42,7 +42,7 @@ public class Menu extends World
         for (int i=0; i<25; i++) addObject(new Wall(),i*15 , 410);
         addObject(new Player(), 375, 345);
         Greenfoot.setSpeed(50);
-        setPaintOrder(ButtonsOverlay.class, Menu.class, Buttons.class, Cover.class,Wall.class,GhostAbstract.class,Player.class,Food.class);
-        setActOrder(Player.class,Food.class,GhostAbstract.class);
+        setPaintOrder(ButtonsOverlay.class, Buttons.class, Cover.class,Wall.class,Ghost.class,Player.class,Food.class);
+        setActOrder(Player.class,Food.class,Ghost.class);
     }
 }

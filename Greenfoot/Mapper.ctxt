@@ -2,6 +2,10 @@
 comment0.target=Mapper
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Mapper\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
-comment1.target=void\ act()
+comment1.target=Mapper()
 comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Mapper\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-numComments=2
+comment2.params=angle\ imageString
+comment2.target=void\ setImageRotation(int,\ java.lang.String)
+comment3.params=map
+comment3.target=Mapper(int)
+numComments=4

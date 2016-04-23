@@ -83,7 +83,7 @@ public class Pacman extends World
                 addObject(new Mapper(mapValue), yIndex*15+50, xIndex*15+50);
             }
         }
-        switch(mapValue) {
+      /*  switch(mapValue) {
             case 23:
                 addObject(new Ghost(1), yIndex*15+50, xIndex*15+50);
                 break;
@@ -99,7 +99,7 @@ public class Pacman extends World
             case 27:
                 addObject(new Ghost(5), yIndex*15+50, xIndex*15+50);
                 break;
-        }
+        } */
     }
     
 }
