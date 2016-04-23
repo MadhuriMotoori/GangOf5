@@ -8,6 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends Actor
 {
+    private boolean left;
+    private boolean right;
+    private int setImage=1;
+    private int imageCounter=0;
     /**
      * Act - do whatever the Player wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -15,6 +19,10 @@ public class Player extends Actor
     public void act() 
     {
         // Add your action code here.
+        if(getWorld().getClass().toString().equals("class Menu"))
+        {
+            motionSet();
+        } 
     }  
     
     private void foodRefiller()
@@ -75,5 +83,44 @@ public class Player extends Actor
             }
         }
         
+    }
+    
+    private void motionSet()
+    {
+        int x=getX(); int y=getY();
+        if(y==345) {
+            left=true; right=false;
+        }
+        if(y==475) {
+            left=false; right=true;
+        }
+        if(x==0 && y==345) setLocation(464,475);
+        if(x==730 && y==475) setLocation(0,475);
+        if(x==330 && y==475) setLocation(375, 345);
+        motionMove(); motionImage();
+    }
+    
+    private void motionMove()
+    {
+        if(left) {
+            setLocation(getX()-2,getY()); setRotation(0);
+        }
+        else if(right) {
+            setLocation(getX()+2,getY()); setRotation(180);
+        }
+    }
+    
+    private void motionImage()
+    {
+        if(imageCounter==10) {
+            if(setImage==1) {
+                setImage(new GreenfootImage("pacman2.png")); setImage=2;
+            }
+            else if(setImage==2) {
+                setImage(new GreenfootImage("pacman3.png")); setImage=1;
+            }
+            imageCounter=0;
+        }
+        else imageCounter=imageCounter+1;
     }
 }
