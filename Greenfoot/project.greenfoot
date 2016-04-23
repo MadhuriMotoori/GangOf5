@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Fri Apr 22 05:35:45 PDT 2016
+#Sat Apr 23 09:58:17 PDT 2016
 dependency9.type=UsesDependency
 target4.type=ClassTarget
 target8.showInterface=false
@@ -13,9 +13,10 @@ readme.x=10
 dependency10.to=Pacman
 class.Player.superclass=greenfoot.Actor
 target4.name=Food2
+class.Ghost1.superclass=GhostAbstract
 target8.width=80
-class.Player.image=pacman2.png
 target4.typeParameters=
+class.Player.image=pacman2.png
 readme.width=47
 class.PacMovement.superclass=greenfoot.Actor
 editor.fx.0.width=700
@@ -30,10 +31,10 @@ target5.name=Food1
 class.Wall.superclass=greenfoot.Actor
 class.Buttons.superclass=greenfoot.Actor
 version=2.8.0
-class.Wall.image=Wall.png
 target6.type=ClassTarget
-class.Menu.superclass=greenfoot.World
+class.Wall.image=Wall.png
 dependency1.to=Player
+class.Menu.superclass=greenfoot.World
 target7.width=110
 dependency5.from=Player
 dependency2.to=Food1
