@@ -1,19 +1,19 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Ghost5 here.
+ * Write a description of class Ghost1 here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Ghost5 extends Ghost
-{
-    /**
-     * Act - do whatever the Ghost5 wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        // Add your action code here.
-    }    
+public class Ghost5 extends Ghost {
+
+    public Ghost5(){
+        setID(1);
+        
+        
+    }
 }
+
+
+
