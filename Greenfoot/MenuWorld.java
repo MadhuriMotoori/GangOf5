@@ -49,6 +49,14 @@ public class MenuWorld extends World
             
         for (int i=0; i<25; i++) addObject(new Wall(),i*15 , 410);
         addObject(new Player(), 375, 345);
+        GhostFactory ghostFactory = new GhostFactory();
+        
+        addObject(ghostFactory.makeGhost(1), 420, 345);
+        addObject(ghostFactory.makeGhost(2), 465, 345); 
+        addObject(ghostFactory.makeGhost(3), 510, 345);
+        addObject(ghostFactory.makeGhost(4), 555, 345); 
+        addObject(ghostFactory.makeGhost(5), 600, 345);
+        
         Greenfoot.setSpeed(50);
         setPaintOrder(ButtonsOverlay.class, Buttons.class, Cover.class,Wall.class,Ghost.class,Player.class,Food.class);
         setActOrder(Player.class,Food.class,Ghost.class);

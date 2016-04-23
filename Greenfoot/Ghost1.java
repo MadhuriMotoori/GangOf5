@@ -10,8 +10,8 @@ public class Ghost1 extends Ghost {
 
     public Ghost1(){
         setID(1);
-        
-        
+        setImageString("Ghost1.png");
+        setImage(new GreenfootImage(getImageString()));
     }
 }
 

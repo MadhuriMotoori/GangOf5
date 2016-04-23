@@ -9,9 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Ghost5 extends Ghost {
 
     public Ghost5(){
-        setID(1);
-        
-        
+		setID(5);
+		setImageString("Ghost5.png");
+		setImage(new GreenfootImage(getImageString()));
     }
 }
 

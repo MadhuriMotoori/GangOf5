@@ -14,11 +14,11 @@ public class Ghost extends Actor
     private int moveCounter = 0;
     private int setImage = 1;
     private int ID;
+    private String image;
      public void act() 
     {
         
         if(getWorld().getClass().toString().equals("class MenuWorld")) {
-            System.out.println("entered");
             motionSet();
         }
     }
@@ -30,6 +30,13 @@ public class Ghost extends Actor
 		this.ID = ID;
 	}
 
+    public String getImageString(){
+		return image;
+	}
+	
+	public void setImageString(String image){
+		this.image = image;
+	}
     
     private void motionSet()
     {
