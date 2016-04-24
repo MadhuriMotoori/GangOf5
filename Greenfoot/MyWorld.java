@@ -6,9 +6,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Pacman extends World
+public class MyWorld extends World
 {
-
+    GhostFactory ghostFactory;
     private int[][] map = {
         {13,9,9,9,9,9,9,9,9,9,9,9,9,9,9,0,9,9,9,9,9,9,9,9,9,9,9,0,9,9,9,9,9,9,9,9,9,9,9,9,9,9,14},
         {8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10},
@@ -52,10 +52,23 @@ public class Pacman extends World
         {8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10},
         {12,11,11,11,11,11,11,11,11,11,11,11,11,11,11,0,11,11,11,11,11,11,11,11,11,11,11,0,11,11,11,11,11,11,11,11,11,11,11,11,11,11,15},
         };
-    public Pacman()
+    public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+       super(731, 701, 1, false);
+        ghostFactory = new GhostFactory();
+        setPaintOrder(ButtonsOverlay.class, Buttons.class, Cover.class,Wall.class,Ghost.class,Player.class,Food.class);
+        setActOrder(Player.class,Food.class,Ghost.class);
+        singlePlayer();
+        Greenfoot.setSpeed(50); Greenfoot.start();
+    }
+    
+    public void singlePlayer(){
+        init();
+
+        setPaintOrder(Buttons.class, Wall.class, Ghost.class, Player.class, Food.class);
+        setActOrder(Food.class,Ghost.class,Player.class);
+        Greenfoot.setSpeed(56);
     }
     
     public void init() {
@@ -70,7 +83,7 @@ public class Pacman extends World
         }
     private void parseMap(int mapValue , int xIndex, int yIndex){
         if(mapValue < 1 || mapValue < 2) { //spaces
-        //do nothing;;
+         return;
         }
         if(mapValue < 23 ) { // most of the objects in map 
             if(mapValue == 16) {
@@ -83,23 +96,23 @@ public class Pacman extends World
                 addObject(new Mapper(mapValue), yIndex*15+50, xIndex*15+50);
             }
         }
-      /*  switch(mapValue) {
+        switch(mapValue) {
             case 23:
-                addObject(new Ghost(1), yIndex*15+50, xIndex*15+50);
+                addObject(ghostFactory.makeGhost(1), yIndex*15+50, xIndex*15+50);
                 break;
             case 24:
-                addObject(new Ghost(2), yIndex*15+50, xIndex*15+50);
+                addObject(ghostFactory.makeGhost(2), yIndex*15+50, xIndex*15+50);
                 break;
             case 25:
-                addObject(new Ghost(3), yIndex*15+50, xIndex*15+50);
+                addObject(ghostFactory.makeGhost(3), yIndex*15+50, xIndex*15+50);
                 break;
             case 26:
-                addObject(new Ghost(4), yIndex*15+50, xIndex*15+50);
+                addObject(ghostFactory.makeGhost(4), yIndex*15+50, xIndex*15+50);
                 break;
             case 27:
-                addObject(new Ghost(5), yIndex*15+50, xIndex*15+50);
+                addObject(ghostFactory.makeGhost(5), yIndex*15+50, xIndex*15+50);
                 break;
-        } */
+        } 
     }
     
 }

@@ -66,6 +66,8 @@ public class MenuWorld extends World
                 public void performAction(){
                     if(Greenfoot.mouseClicked(buttonPlayer1)){
                         System.out.println("Player1 starts to play");
+                        Greenfoot.stop();
+                        Greenfoot.setWorld(new MyWorld());
                     }
                 }
             });

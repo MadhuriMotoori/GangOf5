@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class PacMovement extends Actor
 {
-    public PacMovement(Pacman pacman){
+    public PacMovement(MyWorld pacman){
         
     }
     /**
