@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Player extends Actor
+public class Player extends Actor implements Subject
 {
     private boolean left;
     private boolean right;
@@ -83,6 +83,18 @@ public class Player extends Actor
             }
         }
         
+    }
+    
+    public void register(Observer o) {
+        // TODO Auto-generated method stub
+        
+    }
+    
+    public void unregister(Observer o) {
+    }
+    
+    public void notifyObserver() {
+  
     }
     
     private void motionSet()

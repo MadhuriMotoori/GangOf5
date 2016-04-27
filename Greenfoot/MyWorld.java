@@ -72,14 +72,16 @@ public class MyWorld extends World
     }
     
     public void init() {
+        Player p = new Player();
         for(int xIndex = 0 ; xIndex < map.length ; xIndex ++) {
             for( int yIndex = 0 ; yIndex < map[xIndex].length ; yIndex++ ){
                 if(map[xIndex][yIndex] == 1 )
-                    addObject( new Player() , yIndex*15+50 , xIndex*15+50);
+                    addObject( p , yIndex*15+50 , xIndex*15+50);
                 else
                     parseMap(map[xIndex][yIndex], xIndex , yIndex);
                 }
             }
+            Actor score = new Score(p);
         }
     private void parseMap(int mapValue , int xIndex, int yIndex){
         if(mapValue < 1 || mapValue < 2) { //spaces
