@@ -1,13 +1,17 @@
 #BlueJ class context
 comment0.target=MenuWorld
-comment0.text=\n\ Write\ a\ description\ of\ class\ Menu\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Pacman\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=MenuWorld()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Menu.\n\ \n
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Pacman.\n\ \n
 comment2.params=
 comment2.target=void\ prepare()
 comment3.params=
 comment3.target=void\ performAction()
 comment4.params=
 comment4.target=void\ performAction()
-numComments=5
+comment5.params=
+comment5.target=void\ performAction()
+comment6.params=
+comment6.target=void\ performAction()
+numComments=7
