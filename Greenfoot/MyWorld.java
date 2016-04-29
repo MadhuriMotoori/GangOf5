@@ -95,7 +95,7 @@ public class MyWorld extends World
                 addObject(new Food2(), yIndex*15+50 , xIndex*15+50 );
             }
             else {
-                addObject(new Mapper(mapValue), yIndex*15+50, xIndex*15+50);
+                addObject(new Wall(mapValue), yIndex*15+50, xIndex*15+50);
             }
         }
         switch(mapValue) {
