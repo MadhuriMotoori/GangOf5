@@ -20,6 +20,10 @@ public class Player extends Actor implements Subject
     
     
 
+    PacManState isDead;
+    PacManState isAlive;
+    PacManState hasSuperPower;
+    PacManState currentState;
     
     //forObserver pattern
     private ArrayList<Observer> observers;
@@ -38,7 +42,11 @@ public class Player extends Actor implements Subject
     
     public Player(){
         observers = new ArrayList<Observer>();
-
+        isDead = new DeadState(this);
+        isAlive = new AliveState(this);
+        hasSuperPower = new SuperPowerState(this);
+        
+        currentState = isAlive;
         tScore = 0;
     }
     
@@ -58,7 +66,33 @@ public class Player extends Actor implements Subject
                 left=true; right=false; down=false; up=false;       
             } else {
                 
-                
+                if(!playerIsDead) {
+                   //System.out.println("current state:" +  currentState.getClass().toString());
+                if(!getObjectsInRange(25, Ghost.class).isEmpty()&& currentState.getClass().toString().equals("class AliveState")){
+                    
+                    playerIsDead = false;
+                    setPacManState(getDeadState());
+                }
+                if(currentState.getClass().toString().equals("class DeadState")){
+                    playerIsDead = true;
+                       getWorld().addObject(new Menu(7), 365, 350); getWorld().addObject(new ButtonsOverlay(2), 180, 550); getWorld().addObject(new Buttons(8), 500, 555);
+                        getWorld().removeObjects(getWorld().getObjects(Score.class));
+                        if(getWorld().getObjects(Score.class).isEmpty()) {
+                           if(tScore<100) getWorld().addObject(new Score(tScore), 390, 355);
+                                    else if(tScore<1000) getWorld().addObject(new Score(tScore), 370, 355);
+                                    else if(tScore<10000) getWorld().addObject(new Score(tScore), 350, 355);
+                                    else if(tScore<100000) getWorld().addObject(new Score(tScore), 320, 355);
+                                    else getWorld().addObject(new Score(tScore), 300, 355);
+                        }
+                   
+                } else {
+                 
+                    currentState.move();
+                    currentState.eatNormalFood();
+                    currentState.eatExoticFood();
+                    currentState.eatEnemy();
+                }
+                }
 
                 
                 }
@@ -66,7 +100,37 @@ public class Player extends Actor implements Subject
             }
         
 
+     public void setPacManState(PacManState newPacManState){
+        currentState = newPacManState;
+    }
     
+    public void eatNormalFood(){
+        currentState.eatNormalFood();
+    }
+    
+    public void eatEnemy(){
+        currentState.eatEnemy();
+    }
+    
+    public void eatExoticFood(){
+        currentState.eatExoticFood();
+    }
+    
+    public void move(){
+        currentState.move();
+    }
+    
+    public PacManState getDeadState() {
+        return isDead;
+    }
+    
+    public PacManState getAliveState() {
+        return isAlive;
+    }
+    
+    public PacManState getSuperPowerState() {
+        return hasSuperPower;
+    }
  
     
     
@@ -174,7 +238,22 @@ public class Player extends Actor implements Subject
     
     public int eatingEnemy(){
         //MyWorld paw=(MyWorld) getWorld();
-        return 0;
+         if((!getObjectsInRange(25,Ghost1.class).isEmpty())){
+            return 1;
+        } else if((!getObjectsInRange(25,Ghost2.class).isEmpty())){
+            return 2;
+        }
+        else if((!getObjectsInRange(25,Ghost3.class).isEmpty())){
+            return 3;
+        }
+        else if((!getObjectsInRange(25,Ghost4.class).isEmpty())){
+            return 4;
+        }
+        else if((!getObjectsInRange(25,Ghost5.class).isEmpty())){
+            return 5;
+        }
+        else
+            return 0;
 
     }
     
@@ -243,6 +322,15 @@ public class Player extends Actor implements Subject
             imageCounter=0;
         }
         else imageCounter=imageCounter+1;
+    }
+     public void setEnemyDead(int id){
+         for (Object obj : getWorld().getObjects(Ghost.class)) {
+                 Ghost g = (Ghost) obj;
+                 if(g.getID() == id){
+                    g.dead = true;
+                    break;
+                }
+        }
     }
 
 }
