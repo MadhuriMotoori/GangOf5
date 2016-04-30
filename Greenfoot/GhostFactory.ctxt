@@ -2,4 +2,6 @@
 comment0.target=GhostFactory
 comment1.params=id
 comment1.target=Ghost\ makeGhost(int)
-numComments=2
+comment2.params=
+comment2.target=HelperGhost\ getHelper()
+numComments=3

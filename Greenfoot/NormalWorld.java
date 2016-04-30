@@ -1,14 +1,22 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Pacman here.
+ * Write a description of class MyWorld here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class MyWorld extends World
+public class NormalWorld extends World
 {
+    public boolean muteS;
+    public boolean musicS;
     GhostFactory ghostFactory;
+    public int type;
+    public String moveLeft="left";
+    public String moveRight="right";
+    public String moveUp="up";
+    public String moveDown="down";
+
     private int[][] map = {
         {13,9,9,9,9,9,9,9,9,9,9,9,9,9,9,0,9,9,9,9,9,9,9,9,9,9,9,0,9,9,9,9,9,9,9,9,9,9,9,9,9,9,14},
         {8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10},
@@ -52,70 +60,77 @@ public class MyWorld extends World
         {8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10},
         {12,11,11,11,11,11,11,11,11,11,11,11,11,11,11,0,11,11,11,11,11,11,11,11,11,11,11,0,11,11,11,11,11,11,11,11,11,11,11,11,11,11,15},
         };
-    public MyWorld()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-       super(731, 701, 1, false);
+    
+    /**
+     * Constructor for objects of class MyWorld.
+     * 
+     */
+    public NormalWorld()
+    {   super(731, 701, 1, false);
         ghostFactory = new GhostFactory();
-        setPaintOrder(ButtonsOverlay.class, Buttons.class, Cover.class,Wall.class,Ghost.class,Player.class,Food.class);
+        setPaintOrder(ButtonsOverlay.class, Menu.class, Buttons.class, Cover.class,Wall.class,Ghost.class,Player.class,Food.class);
         setActOrder(Player.class,Food.class,Ghost.class);
         singlePlayer();
         Greenfoot.setSpeed(50); Greenfoot.start();
+
     }
     
     public void singlePlayer(){
-        init();
-
-        setPaintOrder(Buttons.class, Wall.class, Ghost.class, Player.class, Food.class);
-        setActOrder(Food.class,Ghost.class,Player.class);
-        Greenfoot.setSpeed(56);
-    }
-    
-    public void init() {
         Player p = new Player();
-        for(int xIndex = 0 ; xIndex < map.length ; xIndex ++) {
-            for( int yIndex = 0 ; yIndex < map[xIndex].length ; yIndex++ ){
-                if(map[xIndex][yIndex] == 1 )
-                    addObject( p , yIndex*15+50 , xIndex*15+50);
-                else
-                    parseMap(map[xIndex][yIndex], xIndex , yIndex);
-                }
-            }
-            Actor score = new Score(p);
-        }
-    private void parseMap(int mapValue , int xIndex, int yIndex){
-        if(mapValue < 1 || mapValue < 2) { //spaces
-         return;
-        }
-        if(mapValue < 23 ) { // most of the objects in map 
-            if(mapValue == 16) {
-                addObject(new Food1(), yIndex*15+50 , xIndex*15+50 );
-            }
-            else if(mapValue == 17) {
-                addObject(new Food2(), yIndex*15+50 , xIndex*15+50 );
-            }
-            else {
-                addObject(new Wall(mapValue), yIndex*15+50, xIndex*15+50);
+        for(int x = 0; x<map.length; x++) {
+            for(int y = 0; y<map[x].length; y++) {
+                mapReader(map[x][y],x,y); //Greg v code
+                if(map[x][y]==1) addObject(p, y*15+50, x*15+50);
             }
         }
-        switch(mapValue) {
-            case 23:
-                addObject(ghostFactory.makeGhost(1), yIndex*15+50, xIndex*15+50);
-                break;
-            case 24:
-                addObject(ghostFactory.makeGhost(2), yIndex*15+50, xIndex*15+50);
-                break;
-            case 25:
-                addObject(ghostFactory.makeGhost(3), yIndex*15+50, xIndex*15+50);
-                break;
-            case 26:
-                addObject(ghostFactory.makeGhost(4), yIndex*15+50, xIndex*15+50);
-                break;
-            case 27:
-                addObject(ghostFactory.makeGhost(5), yIndex*15+50, xIndex*15+50);
-                break;
-        } 
+        addObject(new Ready(), 365, 530);
+        for(int i=0; i<3; i++) {
+            addObject(new Life(), 25, 475+i*50);
+        }
+        addObject(new Life(), 25, 270);
+        Buttons mute = new Buttons(6); if(muteS) mute.setImage("mute button 2.png"); else mute.setImage("mute button 1.png"); mute.getImage().scale(30,30);
+        Buttons music = new Buttons(5); if(musicS) music.setImage("music button 2.png"); else music.setImage("music button 1.png"); music.getImage().scale(30,30);
+        Actor score = new Score(p);
+        score.setImage(new GreenfootImage("Score: " + 0, 30, java.awt.Color.YELLOW, java.awt.Color.BLACK));
+        addObject(score, 65, 430);
+        
+        setPaintOrder(Buttons.class, Score.class, Menu.class, Wall.class, Ghost.class, Player.class, Food.class);
+        setActOrder(Food.class,Ghost.class,Player.class);
+        Greenfoot.setSpeed(56);type =1;
     }
     
+    public void mapReader(int map,int x,int y)
+    {
+        if(map<1) {
+            return;
+        }
+        if(map<2) {
+            return;
+        }
+        if(map<23) {
+            if(map == 16) {
+                addObject(new Food1(), y*15+50, x*15+50);
+                return;
+            }
+            if(map == 17) {
+                addObject(new Food2(), y*15+50, x*15+50);
+                return;
+            }
+            addObject(new Wall(map), y*15+50, x*15+50);
+            return;
+        }
+        switch(map) {
+             
+            case 23:addObject(ghostFactory.makeGhost(1), y*15+50, x*15+50);
+            break;
+            case 24:addObject(ghostFactory.makeGhost(2), y*15+50, x*15+50);
+            break;
+            case 25:addObject(ghostFactory.makeGhost(3), y*15+50, x*15+50);
+            break;
+            case 26:addObject(ghostFactory.makeGhost(4), y*15+50, x*15+50);
+            break;
+            case 27:addObject(ghostFactory.makeGhost(5), y*15+50, x*15+50);
+            break;
+        }
+    }
 }
-
