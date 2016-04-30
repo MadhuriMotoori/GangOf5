@@ -18,5 +18,9 @@ public class GhostFactory
 		}
 	}
 	
+	public HelperGhost getHelper(){
+	    return new HelperGhost();
+	   }
+	
 }
 

@@ -86,7 +86,11 @@ public class MenuWorld extends World
                 public void performAction(){
                     if(Greenfoot.mouseClicked(buttonPlayer1)){
                         System.out.println("Player1 starts to play");
-
+                        begin.stop();
+                        Greenfoot.stop();
+                        Strategy strategy = new EasyStrategy();
+                        Greenfoot.setWorld(strategy.getWorld());
+                       
                     }
                 }
             });
@@ -117,6 +121,8 @@ public class MenuWorld extends World
                 public void performAction(){
                     if(Greenfoot.mouseClicked(buttonPlayer2)){
                      //Greenfoot.setWorld(new NormalStrategy());
+                    Strategy strategy = new NormalStrategy();
+                        Greenfoot.setWorld(strategy.getWorld());
                     }
                    
                 }
