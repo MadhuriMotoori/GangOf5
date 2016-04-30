@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=PacManState
+comment1.params=
+comment1.target=void\ eatNormalFood()
+comment2.params=
+comment2.target=void\ eatEnemy()
+comment3.params=
+comment3.target=void\ eatExoticFood()
+numComments=4
