@@ -1,19 +1,16 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
-/**
- * Write a description of class ButtonsOverlay here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+import java.util.List;
+import java.awt.Color;
+import java.awt.Font;
 public class ButtonsOverlay extends Buttons
 {
-    /**
-     * Act - do whatever the ButtonsOverlay wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
+    protected int ID;
+    private boolean selected;
+    private int count=1;
+    public ButtonsOverlay(int state)
     {
-        // Add your action code here.
-    }    
+        ID = state; int pState;
+        if(ID<12) setImage(new GreenfootImage(77,77));
+       
+    }
 }
