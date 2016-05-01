@@ -84,9 +84,6 @@ public class NormalWorld extends World
             }
         }
         addObject(new Ready(), 365, 530);
-        for(int i=0; i<3; i++) {
-            addObject(new Life(), 25, 475+i*50);
-        }
         addObject(new Life(), 25, 270);
         Buttons mute = new Buttons(6); if(muteS) mute.setImage("mute button 2.png"); else mute.setImage("mute button 1.png"); mute.getImage().scale(30,30);
         Buttons music = new Buttons(5); if(musicS) music.setImage("music button 2.png"); else music.setImage("music button 1.png"); music.getImage().scale(30,30);

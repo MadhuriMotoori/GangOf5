@@ -75,7 +75,8 @@ public class Player extends Actor implements Subject
                 }
                 if(currentState.getClass().toString().equals("class DeadState")){
                     playerIsDead = true;
-                       getWorld().addObject(new Menu(7), 365, 350); getWorld().addObject(new ButtonsOverlay(2), 180, 550); getWorld().addObject(new Buttons(8), 500, 555);
+                       getWorld().addObject(new Menu(7), 365, 350); 
+                       getWorld().addObject(new ButtonsOverlay(2), 180, 550);
                         getWorld().removeObjects(getWorld().getObjects(Score.class));
                         if(getWorld().getObjects(Score.class).isEmpty()) {
                            if(tScore<100) getWorld().addObject(new Score(tScore), 390, 355);

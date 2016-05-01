@@ -36,10 +36,7 @@ public class Buttons extends Actor implements Invoker
             break;
             case 6: setImage(new GreenfootImage("mute button 1.png")); getImage().scale(30,30);
             break;
-            case 7: setImage(new GreenfootImage("resume.png"));
-            break;
-            case 8: setImage(new GreenfootImage("retry.png"));
-            break;
+
         }
         
     }
@@ -62,10 +59,6 @@ public class Buttons extends Actor implements Invoker
                     break;
                     case 4: setImage(new GreenfootImage("Help selected.png"));
                     break;
-                    case 7: setImage(new GreenfootImage("resume selected.png"));
-                    break;
-                    case 8: setImage(new GreenfootImage("retry selected.png"));
-                    break;
                 }
                 selected =true;
             }
@@ -78,10 +71,6 @@ public class Buttons extends Actor implements Invoker
                     case 3: setImage(new GreenfootImage("About.png"));
                     break;
                     case 4: setImage(new GreenfootImage("Help.png"));
-                    break;
-                    case 7: setImage(new GreenfootImage("resume.png"));
-                    break;
-                    case 8: setImage(new GreenfootImage("retry.png"));
                     break;
                 }
                 selected = false;
@@ -117,5 +106,3 @@ public class Buttons extends Actor implements Invoker
         this.newButtonCommand = newCmd;
     }
 }
-
-

@@ -8,12 +8,23 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Ready extends Actor
 {
+    private GreenfootSound begin = new GreenfootSound("ready-sound.mp3");
+    private int counter =0;
     /**
      * Act - do whatever the Ready wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
-        // Add your action code here.
+       count();
     }    
+    
+    private void count(){
+        if(counter == 100){
+            counter =0; getWorld().removeObject(this);
+        } else {
+            counter = counter +1;
+        }
+        
+    }
 }
