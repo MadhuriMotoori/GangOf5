@@ -16,4 +16,8 @@ public class Food1 extends Food
     {
         // Add your action code here.
     }    
+    
+        public boolean containsPlayer(){
+        return(!getObjectsInRange(7, Player.class).isEmpty());
+    }
 }
