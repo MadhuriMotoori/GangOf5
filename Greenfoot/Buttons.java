@@ -24,9 +24,9 @@ public class Buttons extends Actor implements Invoker
         ID = state;
         
         switch(ID){
-            case 1: setImage(new GreenfootImage("1 player.png"));
+            case 1: setImage(new GreenfootImage("2.png"));
             break;
-            case 2: setImage(new GreenfootImage("2 player.png"));
+            case 2: setImage(new GreenfootImage("nmode.png"));
             break;
             case 3: setImage(new GreenfootImage("About.png"));
             break;
@@ -51,9 +51,9 @@ public class Buttons extends Actor implements Invoker
         if (Greenfoot.mouseMoved(null)) {
             if (Greenfoot.mouseMoved(this) && !selected) {
                 switch(ID) {
-                    case 1: setImage(new GreenfootImage("1 player selected.png"));
+                    case 1: setImage(new GreenfootImage("1.png"));
                     break;
-                    case 2: setImage(new GreenfootImage("2 player selected.png"));
+                    case 2: setImage(new GreenfootImage("nmodes.png"));
                     break;
                     case 3: setImage(new GreenfootImage("About selected.png"));
                     break;
@@ -64,9 +64,9 @@ public class Buttons extends Actor implements Invoker
             }
             if (!Greenfoot.mouseMoved(this) && selected) {
                 switch(ID) {
-                    case 1: setImage(new GreenfootImage("1 player.png"));
+                    case 1: setImage(new GreenfootImage("2.png"));
                     break;
-                    case 2: setImage(new GreenfootImage("2 player.png"));
+                    case 2: setImage(new GreenfootImage("nmode.png"));
                     break;
                     case 3: setImage(new GreenfootImage("About.png"));
                     break;
