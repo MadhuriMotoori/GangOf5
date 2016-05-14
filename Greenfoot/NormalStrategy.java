@@ -20,7 +20,7 @@ public class NormalStrategy extends World implements Strategy
     }
     
     public World getWorld(){
-        return new NormalWorld();
+        return new GodWorld();
     }
     
     

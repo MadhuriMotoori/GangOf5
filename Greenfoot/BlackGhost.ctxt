@@ -1,11 +1,11 @@
 #BlueJ class context
-comment0.target=HelperGhost
+comment0.target=BlackGhost
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ HelperGhost\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=void\ act()
 comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ HelperGhost\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment2.params=
-comment2.target=void\ eatGhost()
+comment2.target=void\ eatPlayer()
 comment3.params=
 comment3.target=void\ moveSet()
 comment4.params=
@@ -17,5 +17,5 @@ comment6.target=void\ move()
 comment7.params=X\ Y
 comment7.target=void\ canMove(int,\ int)
 comment8.params=
-comment8.target=HelperGhost()
+comment8.target=BlackGhost()
 numComments=9

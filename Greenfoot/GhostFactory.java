@@ -21,6 +21,9 @@ public class GhostFactory
 	public HelperGhost getHelper(){
 	    return new HelperGhost();
 	   }
-	
+
+	   public BlackGhost getBlack(){
+	    return new BlackGhost();
+	   }
 }
 
