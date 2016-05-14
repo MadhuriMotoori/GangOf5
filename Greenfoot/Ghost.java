@@ -65,12 +65,13 @@ public class Ghost extends Actor
                 }
                 playerDie=false; setRotation(0); out=false; dead=false; eatable=false; redCounter=0; counterExit=0; moveCounter=0; setImage=1;
                 for( Object obj: getWorld().getObjects(Player.class)){
-            Player player = (Player) obj;
-            player.setPacManState(player.getAliveState());
+                     Player player = (Player) obj;
+                     player.setPacManState(player.getAliveState());
             
-        }
+                }
             }
             
+           
             if(getWorld().getObjects(Menu.class).isEmpty() && getWorld().getObjects(Ready.class).isEmpty()) {
                 if(!playerDie) {
                     eatenPill(); dangerCount();
@@ -91,9 +92,132 @@ public class Ghost extends Actor
                     else {
                         deadMoveAI(); move();
                     }
+                    if(getWorld().getClass().toString().equals("class HardWorld") || 
+                    getWorld().getClass().toString().equals("class GodWorld")) {
+                    split();
+                    }
                     port(); 
                 }
+                }
             }
+        
+    }
+    
+    private void split(){
+    GhostFactory ghostFactory = new GhostFactory();
+    if(inRange()){
+                               
+                              
+                               if(this.getClass().toString().equals("class Ghost1")){
+                                   
+                                    int number = getWorld().getObjects(Ghost1.class).size();
+                                   
+                                     if(number < 2){
+                                         Ghost ghost1Clone = ghostFactory.makeGhost(1);
+                                        getWorld().addObject(ghost1Clone, this.getX(), this.getY());
+                                         setMovementGhostClone(ghost1Clone);
+                                    
+                                     }
+                                
+                                }
+                               if(this.getClass().toString().equals("class Ghost2")){
+                                    
+                                 if(getWorld().getObjects(Ghost2.class).size() < 2) {
+                                     Ghost ghost2Clone = ghostFactory.makeGhost(2);
+                                    getWorld().addObject(ghost2Clone, this.getX(), this.getY());
+                                     setMovementGhostClone(ghost2Clone);
+                                }
+                                    
+                                }
+                                if(this.getClass().toString().equals("class Ghost3")){
+                                     if(getWorld().getObjects(Ghost3.class).size() < 2) {
+                                        Ghost ghost3Clone = ghostFactory.makeGhost(3);
+                                        getWorld().addObject(ghost3Clone, this.getX(), this.getY());
+                                        setMovementGhostClone(ghost3Clone);
+                                       }
+                                     
+                                }
+                                if(this.getClass().toString().equals("class Ghost4")){
+                                     if(getWorld().getObjects(Ghost4.class).size() < 2) {
+                                         Ghost ghost4Clone = ghostFactory.makeGhost(4);
+                                         getWorld().addObject(ghost4Clone, this.getX(), this.getY());
+                                          setMovementGhostClone(ghost4Clone);
+                                      }
+                                    }
+                            if(this.getClass().toString().equals("class Ghost5")){
+                                    Ghost ghost5Clone = ghostFactory.makeGhost(5);
+                                     if(getWorld().getObjects(Ghost5.class).size() < 2) {
+                                    getWorld().addObject(ghost5Clone, this.getX(), this.getY());
+                                     setMovementGhostClone(ghost5Clone);
+                                }
+                               
+                            }
+                        }
+}
+
+private void setMovementGhostClone(Ghost g){
+   // left = false; right=false; up=false; down=false;
+    Wall lw = (Wall)g.getOneObjectAtOffset(-1, 0, Wall.class);
+    Wall rw = (Wall)g.getOneObjectAtOffset(1, 0, Wall.class);
+    Wall uw = (Wall)g.getOneObjectAtOffset(0, 1, Wall.class);
+    Wall dw = (Wall)g.getOneObjectAtOffset(0, -1, Wall.class);
+   // System.out.println("down" + lw.toString() + "r" + rw.toString() +"u" + uw.toString() + "d" +  dw.toString());
+   //     Greenfoot.stop();
+   System.out.println("x : " + g.getX()  + ", y : " + g.getY());
+    if(lw != null && rw !=null && uw!= null) {
+        
+          left= false; right=false; up =false; down = true;
+        System.out.println("down");
+        Greenfoot.stop();
+      
+    } else if(lw!=null && rw !=null && dw != null){
+        left= false; right=false; up =true; down = false;
+         System.out.println("down");
+         Greenfoot.stop();
+        
+    } else if(uw!=null && rw !=null && dw != null){
+        left= true; right=false; up =false; down = false;
+        System.out.println("down");
+         Greenfoot.stop();
+        
+    } else if(lw!=null && uw !=null && dw != null){
+         left= false; right=true; up =false; down = false;
+        System.out.println("down");
+         Greenfoot.stop();
+       
+    }
+    moveSet();
+    move();
+}
+    
+    private int getGhostPosition(String axs)
+    {
+        int position=0;
+        
+        for (Object obj : getWorld().getObjects(Ghost.class)) {
+                Player a = (Player) obj;
+                position = a.getPositionValues(axs);
+        }
+        
+
+        return position;
+    }
+    
+    private boolean inRange(){
+        
+        
+        if(!getObjectsInRange(80, Player.class).isEmpty()){
+            int x = getPlayerPosition(1, "x");
+            int y = getPlayerPosition(1, "y");
+            //System.out.println("Values of x " + x + "and y" + y);
+            if( x > 250 && x < 400 && y > 300 && y < 450){
+               
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
         }
     }
     

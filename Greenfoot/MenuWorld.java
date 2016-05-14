@@ -15,11 +15,15 @@ public class MenuWorld extends World
     private Buttons buttonPlayer2;
     private Buttons buttonAbout;
     private Buttons buttonHelp;
+    private Buttons buttonhard;
+    private Buttons buttongod;
     
     private PlayCommand playCmd;
     private HelpCommand helpCmd;
     private AboutCommand aboutCommand;
     private normalStrategyCommand nrmlCmd;
+    private hardStrategyCommand hardCmd;
+    private godStrategyCommand godCmd;
     /**
      * Constructor for objects of class Pacman.
      * 
@@ -27,7 +31,7 @@ public class MenuWorld extends World
     public MenuWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(731, 701, 1); 
+        super(731, 630, 1); 
         setPaintOrder(ButtonsOverlay.class, Menu.class, Buttons.class, Cover.class,Wall.class,Ghost.class,Player.class,Food.class);
         setActOrder(Player.class,Food.class,Ghost.class);
         prepare();
@@ -42,21 +46,31 @@ public class MenuWorld extends World
         playCmd = new PlayCommand();
         addObject(buttonPlayer1, 560, 290); 
         buttonPlayer2 = new Buttons(2);
-        addObject(buttonPlayer2, 560, 377); 
+        addObject(buttonPlayer2, 570, 350); 
+        
+        buttonhard = new Buttons(7);
+        addObject(buttonhard, 560, 405);
+        
+        buttongod = new Buttons(8);
+        addObject(buttongod, 560, 465);
+        
         buttonAbout = new Buttons(3);
-        addObject(buttonAbout, 528, 455); 
+        addObject(buttonAbout, 558, 525); 
         buttonHelp = new Buttons(4);
         helpCmd = new HelpCommand();
-        addObject(buttonHelp, 558, 543);
+        addObject(buttonHelp, 558, 583);
        
         helpCmd = new HelpCommand();
         aboutCommand = new AboutCommand();
         nrmlCmd = new normalStrategyCommand();
-        
+        hardCmd = new hardStrategyCommand();
+        godCmd = new godStrategyCommand();
         buttonPlayer1.setCommand(playCmd);
         buttonHelp.setCommand(helpCmd);
         buttonAbout.setCommand(aboutCommand);
         buttonPlayer2.setCommand(nrmlCmd);
+        buttonhard.setCommand(hardCmd);
+        buttongod.setCommand(godCmd);
             
         for (int i=0; i<25; i++){
             Wall w = new Wall();
@@ -75,8 +89,8 @@ public class MenuWorld extends World
         //addObject(
         Buttons mute = new Buttons(6); if(muteS) mute.setImage("mute button 2.png"); else mute.setImage("mute button 1.png"); mute.getImage().scale(30,30);
         Buttons music = new Buttons(5); if(musicS) music.setImage("music button 2.png"); else music.setImage("music button 1.png"); music.getImage().scale(30,30);
-        addObject(mute, 465, 620); addObject(music, 510, 620); begin.setVolume(60);
-        if(!musicS) begin.play();
+        addObject(mute, 425, 650); addObject(music, 465, 650); begin.setVolume(60);
+        //if(!musicS) begin.play();
         Greenfoot.setSpeed(50);
         setPaintOrder(ButtonsOverlay.class, Menu.class, Buttons.class, Cover.class,Wall.class,Ghost.class,Player.class,Food.class);
         setActOrder(Player.class,Food.class,Ghost.class);
@@ -128,7 +142,30 @@ public class MenuWorld extends World
                 }
             });
 
-
+            hardCmd.setReceiver(
+            new Receiver(){
+                public void performAction(){
+                    if(Greenfoot.mouseClicked(buttonhard)){
+                     //Greenfoot.setWorld(new NormalStrategy());
+                    Strategy strategy = new HardStrategy();
+                        Greenfoot.setWorld(strategy.getWorld());
+                    }
+                   
+                }
+            });
+            
+            
+             godCmd.setReceiver(
+            new Receiver(){
+                public void performAction(){
+                    if(Greenfoot.mouseClicked(buttongod)){
+                     //Greenfoot.setWorld(new NormalStrategy());
+                    Strategy strategy = new GodStrategy();
+                        Greenfoot.setWorld(strategy.getWorld());
+                    }
+                   
+                }
+            });
 
     }
 }

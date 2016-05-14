@@ -66,7 +66,7 @@ public class NormalWorld extends World
      * 
      */
     public NormalWorld()
-    {   super(731, 701, 1, false);
+    {   super(731, 650, 1, false);
         ghostFactory = new GhostFactory();
         setPaintOrder(ButtonsOverlay.class, Menu.class, Buttons.class, Cover.class,Wall.class,Ghost.class,Player.class,Food.class);
         setActOrder(Player.class,Food.class,Ghost.class);
@@ -84,6 +84,7 @@ public class NormalWorld extends World
             }
         }
         addObject(new Ready(), 365, 530);
+        
         addObject(new Life(), 25, 270);
         Buttons mute = new Buttons(6); if(muteS) mute.setImage("mute button 2.png"); else mute.setImage("mute button 1.png"); mute.getImage().scale(30,30);
         Buttons music = new Buttons(5); if(musicS) music.setImage("music button 2.png"); else music.setImage("music button 1.png"); music.getImage().scale(30,30);

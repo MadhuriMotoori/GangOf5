@@ -63,7 +63,7 @@ public class EasyWorld extends World
      * 
      */
     public EasyWorld()
-    {   super(731, 701, 1, false);
+    {   super(731, 650, 1, false);
         ghostFactory = new GhostFactory();
         setPaintOrder(ButtonsOverlay.class, Menu.class, Buttons.class, Cover.class,Wall.class,Ghost.class,Player.class,Food.class);
         setActOrder(Player.class,Food.class,Ghost.class);

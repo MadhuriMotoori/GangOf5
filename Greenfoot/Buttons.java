@@ -24,17 +24,21 @@ public class Buttons extends Actor implements Invoker
         ID = state;
         
         switch(ID){
-            case 1: setImage(new GreenfootImage("2.png"));
+            case 1: setImage(new GreenfootImage("easy_mode.png"));
             break;
-            case 2: setImage(new GreenfootImage("nmode.png"));
+            case 2: setImage(new GreenfootImage("normal_mode.png"));
             break;
-            case 3: setImage(new GreenfootImage("About.png"));
+            case 3: setImage(new GreenfootImage("about_mode.png"));
             break;
-            case 4: setImage(new GreenfootImage("Help.png"));
+            case 4: setImage(new GreenfootImage("help_mode.png"));
             break;
             case 5: setImage(new GreenfootImage("music button 1.png")); getImage().scale(30,30);
             break;
             case 6: setImage(new GreenfootImage("mute button 1.png")); getImage().scale(30,30);
+            break;
+            case 7: setImage(new GreenfootImage("hard_mode.png"));
+            break;
+            case 8: setImage(new GreenfootImage("god_mode.png"));
             break;
 
         }
@@ -51,26 +55,34 @@ public class Buttons extends Actor implements Invoker
         if (Greenfoot.mouseMoved(null)) {
             if (Greenfoot.mouseMoved(this) && !selected) {
                 switch(ID) {
-                    case 1: setImage(new GreenfootImage("1.png"));
+                    case 1: setImage(new GreenfootImage("easy_mode_s.png"));
                     break;
-                    case 2: setImage(new GreenfootImage("nmodes.png"));
+                    case 2: setImage(new GreenfootImage("normal_mode_s.png"));
                     break;
-                    case 3: setImage(new GreenfootImage("About selected.png"));
+                    case 3: setImage(new GreenfootImage("about_mode_s.png"));
                     break;
-                    case 4: setImage(new GreenfootImage("Help selected.png"));
+                    case 4: setImage(new GreenfootImage("help_mode_s.png"));
+                    break;
+                    case 7: setImage(new GreenfootImage("hard_mode_s.png"));
+                    break;
+                    case 8: setImage(new GreenfootImage("god_mode_s.png"));
                     break;
                 }
                 selected =true;
             }
             if (!Greenfoot.mouseMoved(this) && selected) {
                 switch(ID) {
-                    case 1: setImage(new GreenfootImage("2.png"));
+                    case 1: setImage(new GreenfootImage("easy_mode.png"));
                     break;
-                    case 2: setImage(new GreenfootImage("nmode.png"));
+                    case 2: setImage(new GreenfootImage("normal_mode.png"));
                     break;
-                    case 3: setImage(new GreenfootImage("About.png"));
+                    case 3: setImage(new GreenfootImage("about_mode.png"));
                     break;
-                    case 4: setImage(new GreenfootImage("Help.png"));
+                    case 4: setImage(new GreenfootImage("help_mode.png"));
+                    break;
+                    case 7: setImage(new GreenfootImage("hard_mode.png"));
+                    break;
+                    case 8: setImage(new GreenfootImage("god_mode.png"));
                     break;
                 }
                 selected = false;

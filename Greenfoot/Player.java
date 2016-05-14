@@ -8,6 +8,7 @@ import java.util.*;
  */
 public class Player extends Actor implements Subject
 {
+    GreenfootSound begin = new GreenfootSound("playing-loop-sound.mp3");
     private boolean left;
     private boolean right;
     private boolean down;
@@ -214,6 +215,9 @@ public class Player extends Actor implements Subject
             NormalStrategy paw=(MyWorld) getWorld();
         }*/
         if(normalFood!=null) {
+            if(!begin.isPlaying()){
+                            begin.play();
+                       }
             getWorld().removeObject(normalFood); 
             tScore = tScore + 2;
             setScore(tScore);
